@@ -1,0 +1,73 @@
+form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+form .field {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+
+  color: var(--black-coral);
+  background-color: lightyellow;
+  transition: all 0.25s ease-in-out;
+}
+
+form .field .message {
+  font-weight: 400;
+}
+
+form .field label {
+  font-size: 0.9rem;
+  display: grid;
+}
+
+form label > span {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0.4rem 0;
+}
+
+form .field input {
+  border: 0;
+  background-color: transparent;
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  transition: all 0.25s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
+form .field input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--black-coral);
+}
+
+form .field input:hover {
+  border-bottom: 2px solid var(--black-coral);
+}
+
+form .field.invalid.invalid {
+  background-color: var(--danger);
+  color: var(--white);
+}
+
+form .field.invalid.invalid input {
+  color: var(--white);
+  border-bottom: 2px solid var(--white);
+}
+
+form button {
+  font-weight: 700;
+  padding: 2rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  background-color: var(--aquamarine);
+  border-radius: 5px;
+  color: var(--black-coral);
+  border: 1px solid var(--black-coral);
+}
+
+form button[disabled] {
+  background-color: grey;
+  cursor: not-allowed;
+}

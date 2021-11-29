@@ -1,0 +1,16 @@
+{
+  "name": "my-app",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "next",
+    "prism-svelte": "^0.4.7",
+    "prismjs": "^1.25.0",
+    "svelte": "^3.42.6"
+  },
+  "type": "module"
+}
