@@ -1,4 +1,4 @@
-import { validator } from '$lib/action.js';
-import { schema } from '$lib/schema.js';
+import { validator } from '$lib/action.js'
+import { schema } from '$lib/schema.js'
 
-export { validator, schema };
+export { validator, schema }

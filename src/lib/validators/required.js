@@ -1,5 +1,5 @@
-function required(value) {
-  return !!value;
+function required (value) {
+  return !!value
 }
 
-export { required };
+export { required }

@@ -1,4 +1,4 @@
-import { email } from './email.js';
-import { required } from './required.js';
+import { email } from './email.js'
+import { required } from './required.js'
 
-export { email, required };
+export { email, required }

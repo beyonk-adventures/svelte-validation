@@ -7,9 +7,9 @@ Loading example...
 {/await}
 
 <script>
-  import Prism from 'prismjs';
-  import './theme.css';
-  import 'prism-svelte';
+  import Prism from 'prismjs'
+  import './theme.css'
+  import 'prism-svelte'
 
   export let src
 

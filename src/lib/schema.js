@@ -1,15 +1,16 @@
-import { writable } from 'svelte/store';
-import * as validatorFunctions from './validators';
+import { writable } from 'svelte/store'
+import * as validatorFunctions from './validators'
 
-function schema(configuration) {
-  const store = {};
+function schema (configuration) {
+  const store = {}
   const out = {
     _form: {
-      invalid: false,
-    },
-  };
+      valid: true,
+      invalid: false
+    }
+  }
 
-  for (const [key, { value, validators }] of Object.entries(configuration)) {
+  for (const [ key, { value, validators } ] of Object.entries(configuration)) {
     store[key] = {
       value,
       validate: function (value) {
@@ -17,26 +18,33 @@ function schema(configuration) {
           const validate =
             typeof validator === 'string'
               ? validatorFunctions[validator]
-              : validator;
+              : validator
           if (!validate(value, options)) {
-            throw new Error(message.replace('%s', value));
+            throw new Error(message.replace('%s', value))
           }
         }
-        return true;
-      },
-    };
+        return true
+      }
+    }
 
     out[key] = {
       invalid: false,
+      valid: false,
       dirty: false,
-      message: null,
-    };
+      message: null
+    }
+
+    out._form = {
+      invalid: false,
+      valid: false,
+      dirty: false
+    }
   }
 
   return {
     form: writable(store),
-    validation: writable(out),
-  };
+    validation: writable(out)
+  }
 }
 
-export { schema };
+export { schema }
