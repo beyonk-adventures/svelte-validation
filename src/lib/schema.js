@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store'
-import * as validatorFunctions from './validators'
+import * as validatorFunctions from './validators/index.js'
 
 function schema (configuration) {
   const store = {}
@@ -31,7 +31,7 @@ function schema (configuration) {
       invalid: false,
       valid: false,
       dirty: false,
-      message: null
+      message: undefined
     }
 
     out._form = {
