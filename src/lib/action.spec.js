@@ -350,18 +350,19 @@ describe('action', () => {
         foo: {
           valid: false,
           invalid: false,
-          dirty: false
+          dirty: false,
+          message: undefined
         },
         bar: {
           valid: false,
           invalid: false,
-          dirty: false
+          dirty: false,
+          message: undefined
         },
         _form: {
           valid: false,
           invalid: false,
-          dirty: false,
-          message: undefined
+          dirty: false
         }
       }
 
@@ -389,8 +390,8 @@ describe('action', () => {
             message: undefined
           },
           _form: {
-            valid: true,
-            invalid: false,
+            valid: false,
+            invalid: true,
             dirty: true
           }
         })

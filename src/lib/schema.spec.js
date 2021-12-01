@@ -1,9 +1,8 @@
-import { stub } from 'sinon'
 import { get } from 'svelte/store'
 import { expect } from '@hapi/code'
 import { schema } from './schema.js'
 
-describe.only('schema', () => {
+describe('schema', () => {
   describe('#schema()', () => {
     let built
 
@@ -58,7 +57,7 @@ describe.only('schema', () => {
 
     it('initial field config', () => {
       expect(
-        form.foo.valid
+        form.foo.value
       ).to.equal(null)
     })
 

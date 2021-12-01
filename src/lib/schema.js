@@ -17,10 +17,17 @@ function schema (configuration) {
         for (const { validator, message, options } of validators) {
           const validate =
             typeof validator === 'string'
-              ? validatorFunctions[validator]
+              ? validatorFunctions[validator](options)
               : validator
-          if (!validate(value, options)) {
-            throw new Error(message.replace('%s', value))
+          const result = validate(value)
+          if (result !== true) {
+            let msg = message
+
+            for (const [ prop, val ] of Object.entries(result)) {
+              msg = msg.replace(`%${prop}%`, val)
+            }
+
+            throw new Error(msg)
           }
         }
         return true

@@ -1,5 +1,7 @@
-function required (value) {
-  return !!value
+function requiredValidator () {
+  return function (value) {
+    return !!value || {}
+  }
 }
 
-export { required }
+export { requiredValidator as required }
