@@ -1,6 +1,6 @@
-function validator (node, { validation }) {
+function validator (node, { form: initial, validation }) {
   const key = node.dataset.key
-  let previous
+  let previous = initial[key].value
 
   return {
     update ({ form }) {
