@@ -1,6 +1,8 @@
+import { finalise } from './utils.js'
+
 function includesValidator ({ list = [] }) {
   return function (value) {
-    const comparison = typeof list === 'function' ? list() : list
+    const comparison = finalise(list)
     const values = Array.isArray(value) ? value : [ value ]
 
     for (const v of values) {
