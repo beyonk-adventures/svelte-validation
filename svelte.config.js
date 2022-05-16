@@ -4,7 +4,13 @@ import preprocess from 'svelte-preprocess'
 const config = {
   preprocess: preprocess(),
 
-  kit: {}
+  kit: {
+    package: {
+      exports: f => {
+        return f.endsWith('index.js')
+      }
+    }
+  }
 }
 
 export default config
