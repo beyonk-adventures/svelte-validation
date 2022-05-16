@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "scripts": {
     "dev": "vitebook dev",
-    "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "lint": "eslint src",
     "test": "mocha src/**/**.spec.js",
