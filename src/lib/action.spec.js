@@ -16,12 +16,6 @@ function stubNode (key) {
   }
 }
 
-function stubStore () {
-  return {
-    update: stub()
-  }
-}
-
 describe('action', () => {
   beforeEach(() => {
     global.CustomEvent = class {
@@ -47,8 +41,10 @@ describe('action', () => {
 
       beforeEach(() => {
         node = stubNode('foo')
-        validation = stubStore()
-        action = validator(node, { validation })
+        validation = {
+          update: stub()
+        }
+        action = validator(node, { form, validation })
         action.update({ form })
       })
 
@@ -59,7 +55,7 @@ describe('action', () => {
       })
     })
 
-    context('field is updated, all fields valid', () => {
+    context('initial state, untouched', () => {
       let action
       let node
       let validation
@@ -88,7 +84,59 @@ describe('action', () => {
       beforeEach(() => {
         node = stubNode('foo')
         validation = writable(storeState)
-        action = validator(node, { validation })
+        action = validator(node, { form, validation })
+        action.update({ form })
+      })
+
+      it('has untouched state', () => {
+        expect(
+          get(validation)
+        ).to.equal({
+          foo: {
+            valid: false,
+            invalid: false,
+            dirty: false
+          },
+          _form: {
+            valid: false,
+            invalid: false,
+            message: undefined,
+            dirty: false
+          }
+        })
+      })
+    })
+
+    context('field is updated, all fields valid', () => {
+      let action
+      let node
+      let validation
+
+      const storeState = {
+        foo: {
+          valid: false,
+          invalid: false,
+          dirty: false
+        },
+        _form: {
+          valid: false,
+          invalid: false,
+          dirty: false,
+          message: undefined
+        }
+      }
+
+      beforeEach(() => {
+        const form = {
+          foo: {
+            value: 'f',
+            validate: () => true
+          }
+        }
+        node = stubNode('foo')
+        validation = writable(storeState)
+        action = validator(node, { form, validation })
+        form.foo.value = 'g'
         action.update({ form })
       })
 
@@ -130,13 +178,6 @@ describe('action', () => {
       let node
       let validation
 
-      const form = {
-        foo: {
-          value: 'f',
-          validate: () => true
-        }
-      }
-
       const storeState = {
         foo: {
           valid: false,
@@ -152,9 +193,17 @@ describe('action', () => {
       }
 
       beforeEach(() => {
+        const form = {
+          foo: {
+            value: 'f',
+            validate: () => true
+          }
+        }
+
         node = stubNode('foo')
         validation = writable(storeState)
-        action = validator(node, { validation })
+        action = validator(node, { form, validation })
+        form.foo.value = 'g'
         action.update({ form })
       })
 
@@ -196,13 +245,6 @@ describe('action', () => {
       let node
       let validation
 
-      const form = {
-        foo: {
-          value: 'f',
-          validate: () => true
-        }
-      }
-
       const storeState = {
         foo: {
           valid: false,
@@ -218,9 +260,16 @@ describe('action', () => {
       }
 
       beforeEach(() => {
+        const form = {
+          foo: {
+            value: 'f',
+            validate: () => true
+          }
+        }
         node = stubNode('foo')
         validation = writable(storeState)
-        action = validator(node, { validation })
+        action = validator(node, { form, validation })
+        form.foo.value = 'g'
         action.update({ form })
       })
 
@@ -262,17 +311,6 @@ describe('action', () => {
       let node
       let validation
 
-      const form = {
-        foo: {
-          value: 'f',
-          validate: () => true
-        },
-        bar: {
-          value: 'b',
-          validate: () => { throw new Error('Field invalid') }
-        }
-      }
-
       const storeState = {
         foo: {
           valid: false,
@@ -293,9 +331,20 @@ describe('action', () => {
       }
 
       beforeEach(() => {
+        const form = {
+          foo: {
+            value: 'f',
+            validate: () => true
+          },
+          bar: {
+            value: 'b',
+            validate: () => { throw new Error('Field invalid') }
+          }
+        }
         node = stubNode('bar')
         validation = writable(storeState)
-        action = validator(node, { validation })
+        action = validator(node, { form, validation })
+        form.bar.value = 'c'
         action.update({ form })
       })
 
@@ -335,17 +384,6 @@ describe('action', () => {
       let node
       let validation
 
-      const form = {
-        foo: {
-          value: 'f',
-          validate: () => true
-        },
-        bar: {
-          value: 'b',
-          validate: () => true
-        }
-      }
-
       const storeState = {
         foo: {
           valid: false,
@@ -367,9 +405,21 @@ describe('action', () => {
       }
 
       beforeEach(() => {
+        const form = {
+          foo: {
+            value: 'f',
+            validate: () => true
+          },
+          bar: {
+            value: 'b',
+            validate: () => true
+          }
+        }
+
         node = stubNode('foo')
         validation = writable(storeState)
-        action = validator(node, { validation })
+        action = validator(node, { form, validation })
+        form.foo.value = 'c'
         action.update({ form })
       })
 
