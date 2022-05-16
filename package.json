@@ -1,6 +1,6 @@
 {
   "name": "@beyonk/svelte-validation",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "scripts": {
     "dev": "vitebook dev",
     "preview": "svelte-kit preview",
