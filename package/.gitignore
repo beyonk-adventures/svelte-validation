@@ -1,9 +1,0 @@
-node_modules
-*.log
-.svelte-kit
-
-.DS_STORE
-.cache
-.temp
-node_modules/
-dist/
