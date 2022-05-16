@@ -3,7 +3,7 @@ import { finalise } from './utils.js'
 function dateValidator ({
   before,
   after
-}) {
+} = {}) {
   return function (value) {
     const date = new Date(value)
     let valid = true
