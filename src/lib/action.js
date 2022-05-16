@@ -16,10 +16,7 @@ function validator (node, { form: initial, validation }) {
       validation.update(validated => {
         delete validated._form
         for (const [ field, result ] of Object.entries(validated)) {
-          let valid = result.valid
-          let invalid = result.invalid
-          let dirty = result.dirty
-          let message = result.message
+          let { valid, invalid, dirty, message } = result
 
           if (field === key) {
             dirty = true

@@ -14,7 +14,6 @@ function dateValidator ({
 
     if (after) {
       valid = valid && date < finalise(after)
-      console.log('after valid', valid)
     }
 
     return valid
