@@ -1,18 +1,16 @@
-<script lang="ts" context="module">
-  import type { PageMeta } from '@vitebook/client';
-
-  export const __pageMeta: PageMeta = {
+<script context="module">
+  export const PageMeta = {
     title: 'Basic Validation',
-    description: 'Basic Validation Example',
-  };
+    description: 'Basic Validation Example'
+  }
 </script>
 
 <script>
-  import { Variant } from '@vitebook/client';
+  import { Variant } from '@vitebook/client'
   import './form.css'
   import { validator, schema } from '$lib/index.js'
 
-	const { form: basicForm, validation: basicValidation } = schema({
+const { form: basicForm, validation: basicValidation } = schema({
     name: {
       value: null,
       validators: [
@@ -26,7 +24,7 @@
         { validator: 'email', message: '%email% Should be an email' }
       ]
     }
-	})
+})
 
   const { form: nullsForm, validation: nullsValidation } = schema({
     name: {
@@ -42,7 +40,7 @@
         { validator: 'email', message: '%email% Should be an email' }
       ]
     }
-	})
+})
 </script>
 
 

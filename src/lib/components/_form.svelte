@@ -7,21 +7,21 @@
     export let label
     export let type = 'text'
 
-	const {
-        form,
-        validation
+const {
+      form,
+      validation
     } = schema({
-        name: {
-            value: null,
-            validators: [
-                { validator: 'required', message: 'Please enter your name' }
-            ]
-        },
-        field2: {
-            value,
-            validators
-        }
-	})
+      name: {
+        value: null,
+        validators: [
+          { validator: 'required', message: 'Please enter your name' }
+        ]
+      },
+      field2: {
+        value,
+        validators
+      }
+})
 </script>
 
 <p>

@@ -1,14 +1,12 @@
-<script lang="ts" context="module">
-  import type { PageMeta } from '@vitebook/client';
-
-  export const __pageMeta: PageMeta = {
+<script context="module">
+  export const PageMeta = {
     title: 'Checkbox Validation',
-    description: 'Checkbox Validation Example',
-  };
+    description: 'Checkbox Validation Example'
+  }
 </script>
 
 <script>
-  import { Variant } from '@vitebook/client';
+  import { Variant } from '@vitebook/client'
   import Form from './components/_form.svelte'
   import './form.css'
 </script>

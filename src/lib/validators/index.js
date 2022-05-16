@@ -4,8 +4,8 @@ import { includes } from './includes.js'
 import { date } from './date.js'
 
 export {
-    email,
-    required,
-    includes,
-    date
+  email,
+  required,
+  includes,
+  date
 }
